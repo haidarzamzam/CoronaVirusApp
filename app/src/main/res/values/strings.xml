@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CoronaVirusApp</string>
+    <string name="onboarding_header">CoronaVirus</string>
+    <string name="onboarding_title_1">Wear a Mask</string>
+    <string name="onboarding_title_2">Hand Wash &amp; Sanitize</string>
+    <string name="onboarding_title_3">Pyshical Distancing</string>
+    <string name="onboarding_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat felis sit eget euismod et vulputate. Vitae lacus, maecenas odio ac.</string>
 </resources>
