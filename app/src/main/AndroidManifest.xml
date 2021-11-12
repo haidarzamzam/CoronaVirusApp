@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoronaVirusApp">
         <activity
+            android:name=".ui.screen.main.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.screen.onboarding.OnboardingActivity"
             android:exported="true">
             <intent-filter>

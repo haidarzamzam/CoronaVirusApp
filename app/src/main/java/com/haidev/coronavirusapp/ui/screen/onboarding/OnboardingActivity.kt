@@ -1,14 +1,29 @@
 package com.haidev.coronavirusapp.ui.screen.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.haidev.coronavirusapp.BuildConfig
 import com.haidev.coronavirusapp.R
+import com.haidev.coronavirusapp.data.sharedpreferences.SharedPreference
 import com.haidev.coronavirusapp.databinding.ActivityOnboardingBinding
 import com.haidev.coronavirusapp.ui.base.BaseActivity
+import com.haidev.coronavirusapp.ui.screen.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingActivity :
@@ -20,12 +35,25 @@ class OnboardingActivity :
     private val binding get() = _binding
 
     private lateinit var onboardingAdapter: OnboardingAdapter
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    val reqCode: Int = 123
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = getViewDataBinding()
         binding?.lifecycleOwner = this
         onboardingViewModel.navigator = this
+
+        FirebaseApp.initializeApp(this)
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(BuildConfig.FIREBASE_WEB_CLIENT)
+            .requestEmail()
+            .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     override fun onReadyAction() {
@@ -86,7 +114,46 @@ class OnboardingActivity :
                 )
             }
         }
+
+        binding?.buttonLoginGoogle?.setOnClickListener {
+            val signInIntent: Intent = mGoogleSignInClient.signInIntent
+            startActivityForResult(signInIntent, reqCode)
+        }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == reqCode) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account: GoogleSignInAccount? = task.getResult(ApiException::class.java)
+                if (account != null) {
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            SharedPreference.setEmail(this, account.email.toString())
+                            SharedPreference.setUsername(this, account.displayName.toString())
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+            } catch (e: ApiException) {
+                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
+                Log.d("ERRORBOSSS : ", e.toString())
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (GoogleSignIn.getLastSignedInAccount(this) != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
+
 
     override fun setLayout() = R.layout.activity_onboarding
 
