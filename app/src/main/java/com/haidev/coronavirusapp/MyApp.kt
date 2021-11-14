@@ -3,6 +3,8 @@ package com.haidev.coronavirusapp
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.haidev.coronavirusapp.di.apiRepositoryModule
+import com.haidev.coronavirusapp.di.remoteModule
 import com.haidev.coronavirusapp.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -29,7 +31,9 @@ class MyApp : Application() {
             androidContext(this@MyApp)
             modules(
                 listOf(
-                    viewModelModule
+                    viewModelModule,
+                    apiRepositoryModule,
+                    remoteModule,
                 )
             )
         }

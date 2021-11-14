@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.22140872341146858" />
+        <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_language.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/item_onboarding.xml" value="0.25" />
       </map>
