@@ -15,4 +15,6 @@
     <string name="death">Death</string>
     <string name="_0">0</string>
     <string name="ratio_of_nrecovery">Ratio of\nRecovery</string>
+    <string name="recovered_n">Recovered\n</string>
+    <string name="affected_n">Affected\n</string>
 </resources>

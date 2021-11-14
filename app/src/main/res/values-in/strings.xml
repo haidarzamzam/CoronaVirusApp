@@ -15,4 +15,6 @@
     <string name="death">Meninggal</string>
     <string name="_0">0</string>
     <string name="ratio_of_nrecovery">Rasio of\nPemulihan</string>
+    <string name="recovered_n">Terselamatkan\n</string>
+    <string name="affected_n">Terdampak\n</string>
 </resources>

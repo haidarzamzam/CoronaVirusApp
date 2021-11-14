@@ -74,7 +74,7 @@ class OnboardingActivity :
                 updateLanguage("id")
             }
         } else {
-            updateLanguage("id")
+            updateLanguage("en")
         }
     }
 

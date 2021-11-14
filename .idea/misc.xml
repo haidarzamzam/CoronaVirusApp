@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/bg_container_header.xml" value="0.12777777777777777" />
         <entry key="app/src/main/res/drawable/bg_container_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_language_home.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/drawable/bg_point_affected.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_point_recovered.xml" value="0.16111111111111112" />
         <entry key="app/src/main/res/drawable/bg_rounded_button.xml" value="0.22685185185185186" />
         <entry key="app/src/main/res/drawable/bg_spinner_country.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/bg_spinner_home.xml" value="0.125" />
@@ -16,7 +18,7 @@
         <entry key="app/src/main/res/drawable/dot_nonactive.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.10052083333333334" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.22140872341146858" />
         <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.1" />

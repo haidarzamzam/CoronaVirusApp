@@ -6,4 +6,7 @@
     <color name="silver">#BFC4C4C4</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="sunglow">#FFC542</color>
+    <color name="deep_sky_blue">#09B5FF</color>
+    <color name="coral_red">#FF464F</color>
 </resources>
