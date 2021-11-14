@@ -1,4 +1,4 @@
-package com.haidev.coronavirusapp.ui.screen.main
+package com.haidev.coronavirusapp.ui.screen.home
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData

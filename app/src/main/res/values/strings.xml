@@ -9,4 +9,10 @@
     <string name="language">EN</string>
     <string name="select_country">Select Country</string>
     <string name="last_update">Last update</string>
+    <string name="total_case">Total Case</string>
+    <string name="active_case">Active Case</string>
+    <string name="recovered">Recovered</string>
+    <string name="death">Death</string>
+    <string name="_0">0</string>
+    <string name="ratio_of_nrecovery">Ratio of\nRecovery</string>
 </resources>

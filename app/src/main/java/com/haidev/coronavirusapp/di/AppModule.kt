@@ -1,7 +1,7 @@
 package com.haidev.coronavirusapp.di
 
 import com.haidev.coronavirusapp.data.source.repository.CoronaStatisticRepository
-import com.haidev.coronavirusapp.ui.screen.main.HomeViewModel
+import com.haidev.coronavirusapp.ui.screen.home.HomeViewModel
 import com.haidev.coronavirusapp.ui.screen.onboarding.OnboardingViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel

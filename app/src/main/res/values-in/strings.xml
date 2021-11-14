@@ -9,4 +9,10 @@
     <string name="language">ID</string>
     <string name="select_country">Pilih Negara</string>
     <string name="last_update">Terakhir diperbarui</string>
+    <string name="total_case">Total Kasus</string>
+    <string name="active_case">Kasus Aktif</string>
+    <string name="recovered">Pulih</string>
+    <string name="death">Meninggal</string>
+    <string name="_0">0</string>
+    <string name="ratio_of_nrecovery">Rasio of\nPemulihan</string>
 </resources>

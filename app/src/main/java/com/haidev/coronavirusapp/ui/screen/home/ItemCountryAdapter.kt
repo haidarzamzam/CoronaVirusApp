@@ -1,4 +1,4 @@
-package com.haidev.coronavirusapp.ui.screen.main
+package com.haidev.coronavirusapp.ui.screen.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,8 +8,12 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.haidev.coronavirusapp.R
+import com.haidev.coronavirusapp.data.model.CoronaStatisticModel
 
-class ItemLanguageAdapter(val context: Context, var dataSource: List<ItemLanguageModel>) :
+class ItemCountryAdapter(
+    val context: Context,
+    var dataSource: List<CoronaStatisticModel.Response.Country>
+) :
     BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -20,21 +24,14 @@ class ItemLanguageAdapter(val context: Context, var dataSource: List<ItemLanguag
         val view: View
         val vh: ItemHolder
         if (convertView == null) {
-            view = inflater.inflate(R.layout.item_language, parent, false)
+            view = inflater.inflate(R.layout.item_country, parent, false)
             vh = ItemHolder(view)
             view?.tag = vh
         } else {
             view = convertView
             vh = view.tag as ItemHolder
         }
-        vh.tvNameCountry.text = dataSource[position].name
-
-        val id = context.resources.getIdentifier(
-            dataSource[position].img,
-            "drawable",
-            context.packageName
-        )
-        vh.ivFlag.setBackgroundResource(id)
+        vh.tvNameCountry.text = dataSource[position].Country
 
         return view
     }

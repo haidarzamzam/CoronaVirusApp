@@ -23,7 +23,7 @@ import com.haidev.coronavirusapp.R
 import com.haidev.coronavirusapp.data.sharedpreferences.SharedPreference
 import com.haidev.coronavirusapp.databinding.ActivityOnboardingBinding
 import com.haidev.coronavirusapp.ui.base.BaseActivity
-import com.haidev.coronavirusapp.ui.screen.main.HomeActivity
+import com.haidev.coronavirusapp.ui.screen.home.HomeActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingActivity :
