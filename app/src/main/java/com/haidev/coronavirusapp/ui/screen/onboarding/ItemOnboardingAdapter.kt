@@ -10,7 +10,10 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.haidev.coronavirusapp.R
 
-class OnboardingAdapter(private val context: Context, private val item: List<ItemOnboardingModel>) :
+class ItemOnboardingAdapter(
+    private val context: Context,
+    private val item: List<ItemOnboardingModel>
+) :
     PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
 

@@ -3,12 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../Library/Android/sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_container_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_language_home.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/bg_rounded_button.xml" value="0.22685185185185186" />
+        <entry key="app/src/main/res/drawable/bg_spinner_home.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/dot_active.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/drawable/dot_nonactive.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.10052083333333334" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.22140872341146858" />
+        <entry key="app/src/main/res/layout/item_language.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/item_onboarding.xml" value="0.25" />
       </map>
     </option>

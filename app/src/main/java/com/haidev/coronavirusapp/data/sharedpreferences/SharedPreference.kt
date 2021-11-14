@@ -8,6 +8,7 @@ object SharedPreference {
 
     const val EMAIL = "email"
     const val USERNAME = "username"
+    const val LOCALE = "locale"
 
     private fun getSharedPreference(ctx: Context?): SharedPreferences? {
         return PreferenceManager.getDefaultSharedPreferences(ctx)
@@ -31,6 +32,10 @@ object SharedPreference {
         )
     }
 
+    fun getUsername(context: Context) = getSharedPreference(
+        context
+    )?.getString(USERNAME, "")
+
     fun setUsername(context: Context, username: String) {
         editor(
             context,
@@ -39,8 +44,15 @@ object SharedPreference {
         )
     }
 
-    fun getUsername(context: Context) = getSharedPreference(
+    fun getLocale(context: Context) = getSharedPreference(
         context
-    )?.getString(USERNAME, "")
+    )?.getString(LOCALE, "")
 
+    fun setLocale(context: Context, username: String) {
+        editor(
+            context,
+            LOCALE,
+            username
+        )
+    }
 }

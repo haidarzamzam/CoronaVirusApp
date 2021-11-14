@@ -1,14 +1,17 @@
 package com.haidev.coronavirusapp.ui.base
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.haidev.coronavirusapp.data.sharedpreferences.SharedPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<out Any>> :
@@ -60,5 +63,25 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<out Any>> :
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
+    }
+
+    @Suppress("DEPRECATION")
+    fun updateLanguage(language: String = "") {
+        val prefLanguage = SharedPreference.getLocale(this) ?: "id"
+
+        val languageSet = if (language != "") language else prefLanguage
+
+        SharedPreference.setLocale(this, languageSet)
+
+        val locale = Locale(languageSet)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+        config.setLayoutDirection(locale)
+        val resources = resources
+
+        resources?.updateConfiguration(config, resources.displayMetrics)
+        onConfigurationChanged(config)
     }
 }

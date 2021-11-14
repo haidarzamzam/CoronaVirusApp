@@ -23,7 +23,7 @@ import com.haidev.coronavirusapp.R
 import com.haidev.coronavirusapp.data.sharedpreferences.SharedPreference
 import com.haidev.coronavirusapp.databinding.ActivityOnboardingBinding
 import com.haidev.coronavirusapp.ui.base.BaseActivity
-import com.haidev.coronavirusapp.ui.screen.main.MainActivity
+import com.haidev.coronavirusapp.ui.screen.main.HomeActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingActivity :
@@ -34,10 +34,12 @@ class OnboardingActivity :
     private var _binding: ActivityOnboardingBinding? = null
     private val binding get() = _binding
 
-    private lateinit var onboardingAdapter: OnboardingAdapter
+    private lateinit var itemOnboardingAdapter: ItemOnboardingAdapter
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val reqCode: Int = 123
     private lateinit var firebaseAuth: FirebaseAuth
+
+    private lateinit var currentLanguage: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +60,22 @@ class OnboardingActivity :
 
     override fun onReadyAction() {
         super.onReadyAction()
+        initLocale()
         initView()
         initSliderOnboarding()
+    }
+
+    private fun initLocale() {
+        if (SharedPreference.getLocale(this) != null) {
+            if (SharedPreference.getLocale(this) == "en") {
+                updateLanguage("en")
+
+            } else {
+                updateLanguage("id")
+            }
+        } else {
+            updateLanguage("id")
+        }
     }
 
     private fun initView() {
@@ -81,8 +97,9 @@ class OnboardingActivity :
     }
 
     private fun initSliderOnboarding() {
-        onboardingAdapter = OnboardingAdapter(this, ItemOnboardingData.generateItemOnboarding())
-        binding?.viewPager?.adapter = onboardingAdapter
+        itemOnboardingAdapter =
+            ItemOnboardingAdapter(this, ItemOnboardingData.generateItemOnboarding())
+        binding?.viewPager?.adapter = itemOnboardingAdapter
         binding?.viewPager?.let { binding?.dotsIndicator?.setViewPager(it) }
         binding?.viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
@@ -133,7 +150,7 @@ class OnboardingActivity :
                         if (task.isSuccessful) {
                             SharedPreference.setEmail(this, account.email.toString())
                             SharedPreference.setUsername(this, account.displayName.toString())
-                            val intent = Intent(this, MainActivity::class.java)
+                            val intent = Intent(this, HomeActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
@@ -149,7 +166,7 @@ class OnboardingActivity :
     override fun onStart() {
         super.onStart()
         if (GoogleSignIn.getLastSignedInAccount(this) != null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }
